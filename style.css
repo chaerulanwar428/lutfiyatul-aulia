@@ -248,7 +248,7 @@ body {
 .envelope-container {
     position: absolute;
     top: 40%;
-    left: 25%;
+    left: 30%;
     transform: translate(-50%, -50%);
     text-align: center;
     cursor: pointer;
@@ -1267,4 +1267,15 @@ body:not(.birthday-started) * {
     cursor: pointer;
     color: white;
     z-index: 10000000000000000;
+}
+
+.boxMail > .fa-xmark {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.boxMail > .fa-xmark.show-close {
+    opacity: 1;
+    visibility: visible;
 }
