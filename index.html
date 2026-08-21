@@ -62,22 +62,25 @@
                 </div>
             </div>
             <div class="right">
-                <div class="box__account">
-                    <div class="image">
-                        <img src="./images/unnamed.jpeg" alt="">
-                    </div>
-                    <div class="name">
-                        <i class="fa-solid fa-heart"></i>
-                        <span>Untuk Fiyaa</span>
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <div class="balloon_one">
-                        <img width="100px" src="./images/balloon1.png" alt="">
-                    </div>
-                    <div class="balloon_two">
-                        <img width="100px" src="./images/balloon2.png" alt="">
-                    </div>
-                </div>
+<div class="box__account">
+        <div class="image">
+            <img src="./images/unnamed.jpeg" alt="">
+        </div>
+
+        <div class="name">
+            <i class="fa-solid fa-heart"></i>
+            <span>Untuk Fiyaa</span>
+            <i class="fa-solid fa-heart"></i>
+        </div>
+
+        <div class="balloon_one">
+            <img width="100px" src="./images/balloon1.png" alt="">
+        </div>
+
+        <div class="balloon_two">
+            <img width="100px" src="./images/balloon2.png" alt="">
+        </div>
+    </div>
                 <div class="cricle">
                     <div class="text__cricle">
                         <span style="--i: 1;">h</span>
@@ -171,6 +174,20 @@
 <audio id="birthdayMusic" preload="auto" loop>
     <source src="./ulang-tahun.mp3" type="audio/mpeg">
 </audio>
+
+    <div class="video-popup" id="videoPopup">
+    <div class="video-popup-content">
+        <button class="video-close" id="videoClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <video id="birthdayVideo" controls playsinline>
+            <source src="./video-ulang-tahun.mp4" type="video/mp4">
+            Browser kamu tidak mendukung video.
+        </video>
+    </div>
+</div>
+
 
 </body>
 <script>
@@ -323,6 +340,44 @@ const closeButton = document.querySelector(".boxMail > .fa-xmark");
 
 card2.addEventListener("mouseenter", function () {
     closeButton.classList.add("show-close");
+});
+
+    const boxAccount = document.querySelector(".box__account");
+const videoPopup = document.getElementById("videoPopup");
+const birthdayVideo = document.getElementById("birthdayVideo");
+const videoClose = document.getElementById("videoClose");
+
+boxAccount.addEventListener("click", function () {
+
+    // Tampilkan popup
+    videoPopup.classList.add("active");
+
+    // Hentikan musik ulang tahun
+    birthdayMusic.pause();
+
+    // Mulai video dari awal
+    birthdayVideo.currentTime = 0;
+
+    birthdayVideo.play().catch(error => {
+        console.log("Video gagal diputar:", error);
+    });
+
+});
+
+videoClose.addEventListener("click", function () {
+
+    // Tutup popup
+    videoPopup.classList.remove("active");
+
+    // Hentikan video
+    birthdayVideo.pause();
+    birthdayVideo.currentTime = 0;
+
+    // Putar kembali musik ulang tahun
+    birthdayMusic.play().catch(error => {
+        console.log("Musik gagal diputar:", error);
+    });
+
 });
  
 
